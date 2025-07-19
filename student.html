@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <h1>Student Dashboard</h1>
+  <button onclick="logout()">Logout</button>
+
+  <h2>Your Details</h2>
+  <div id="studentDetails"></div>
+
+  <h2>Your Result</h2>
+  <div id="resultDisplay"></div>
+
+  <script>
+    function logout() {
+      sessionStorage.removeItem('loggedInUser');
+      window.location.href = 'login.html';
+    }
+
+    const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+
+    if (!loggedInUser || loggedInUser.role !== 'student') {
+      alert('Please login as student');
+      window.location.href = 'login.html';
+    }
+
+    const students = JSON.parse(localStorage.getItem('students')) || [];
+    const results = JSON.parse(localStorage.getItem('results')) || {};
+
+    // Find student by ID from login session
+    const student = students.find(s => s.id === loggedInUser.id);
+
+    if (!student) {
+      alert('Student record not found');
+      logout();
+    }
+
+    // Show student details
+    const studentDetails = document.getElementById('studentDetails');
+    studentDetails.innerHTML = `
+      <p><strong>ID:</strong> ${student.id}</p>
+      <p><strong>Name:</strong> ${student.name}</p>
+      <p><strong>Age:</strong> ${student.age}</p>
+      <p><strong>Gender:</strong> ${student.gender}</p>
+      <p><strong>Department:</strong> ${student.department}</p>
+      <p><strong>DOB:</strong> ${student.dob}</p>
+      <p><strong>Address:</strong> ${student.address}</p>
+      <p><strong>Email:</strong> ${student.email}</p>
+      <p><strong>Phone:</strong> ${student.phone}</p>
+      <p><strong>Guardian:</strong> ${student.guardian}</p>
+      <p><strong>Guardian Phone:</strong> ${student.guardianPhone}</p>
+      <p><strong>State:</strong> ${student.state}</p>
+      <p><strong>Year Admitted:</strong> ${student.yearAdmitted}</p>
+      <p><strong>Type:</strong> ${student.studentType}</p>
+      <p><strong>Status:</strong> ${student.status}</p>
+    `;
+
+    // Show student result if uploaded
+    const resultDisplay = document.getElementById('resultDisplay');
+    const studentResult = results[student.id];
+
+    if (studentResult) {
+      const link = document.createElement('a');
+      link.href = studentResult.content;  // base64 or blob URL
+      link.download = studentResult.name;
+     link.textContent = 'Download your result file: '${studentResult.name}'';
+      resultDisplay.appendChild(link);
+    } else {
+      resultDisplay.textContent = 'No result uploaded yet.';
+    }
+  </script>
+</body>
+</html>

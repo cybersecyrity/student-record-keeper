@@ -1,0 +1,312 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #00eaff;
+}
+
+/* Body and background */
+body.admin-page {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Header */
+.dashboard-header {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00eaff;
+  margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+  font-size: 28px;
+  text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
+}
+
+.dashboard-header button {
+  background-color: #00eaff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 15px #00eaff;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-header button:hover {
+  background-color: #00c8d6;
+  box-shadow: 0 0 25px #00c8d6;
+}
+
+/* Main content container */
+.dashboard-content {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+/* Form section */
+.form-section, .upload-section {
+  background: rgba(0, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00eaff;
+}
+
+.form-section h2,
+.upload-section h2,
+.table-section h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  text-shadow: 0 0 8px #00eaff;
+  text-align: center;
+}
+
+/* Form styling */
+form#studentForm,
+form#uploadForm {
+  display: flex;
+  flex-direction: column;
+}
+
+form#studentForm input,
+form#studentForm select,
+form#uploadForm select,
+form#uploadForm input[type="file"] {
+  margin-bottom: 15px;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background: rgba(0, 255, 255, 0.15);
+  color: #00eaff;
+  box-shadow: inset 0 0 8px #00eaff;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+form#studentForm input:focus,
+form#studentForm select:focus,
+form#uploadForm select:focus,
+form#uploadForm input[type="file"]:focus {
+  box-shadow: 0 0 20px #00ffff, inset 0 0 20px #00ffff;
+  background: rgba(0, 255, 255, 0.25);
+}
+
+/* Buttons inside forms */
+form#studentForm button,
+form#uploadForm button {
+  margin-top: 10px;
+  background-color: #00eaff;
+  border: none;
+  padding: 12px 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 20px #00eaff;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+form#studentForm button:hover,
+form#uploadForm button:hover {
+  background-color: #00c8d6;
+  box-shadow: 0 0 30px #00c8d6;
+}
+
+/* Cancel Edit button */
+#cancelEditBtn {
+  background-color: #ff4c4c;
+  color: #fff;
+  box-shadow: 0 0 20px #ff4c4c;
+}
+
+#cancelEditBtn:hover {
+  background-color: #e63939;
+  box-shadow: 0 0 30px #e63939;
+}
+
+/* Table section */
+.table-section {
+  grid-column: span 2;
+  overflow-x: auto;
+  background: rgba(0, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00eaff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #00eaff;
+  font-size: 14px;
+  text-align: left;
+}
+
+thead {
+  background: rgba(0, 255, 255, 0.2);
+}
+
+thead th {
+  padding: 12px 15px;
+  text-shadow: 0 0 5px #00eaff;
+  border-bottom: 1px solid #00eaff;
+}
+
+tbody tr {
+  border-bottom: 1px solid #00eaff;
+}
+
+tbody tr:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+tbody td {
+  padding: 10px 15px;
+}
+
+/* Actions buttons in table */
+tbody td button {
+  background-color: #00eaff;
+  border: none;
+  padding: 6px 12px;
+  margin-right: 5px;
+  border-radius: 6px;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 12px #00eaff;
+  transition: background 0.3s ease;
+}
+
+tbody td button:hover {
+  background-color: #00c8d6;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 900px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+  .table-section {
+    grid-column: span 1;
+  }
+}
+/* Form inputs/subtler style */
+form#studentForm input,
+form#studentForm select,
+form#uploadForm select,
+form#uploadForm input[type="file"] {
+  margin-bottom: 15px;
+  padding: 12px 14px;
+  border: 2px solid #00eaff;
+  border-radius: 8px;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.3); /* darker, less transparent */
+  color: #00eaff;
+  box-shadow: none; /* remove inset glow */
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form#studentForm input:focus,
+form#studentForm select:focus,
+form#uploadForm select:focus,
+form#uploadForm input[type="file"]:focus {
+  border-color: #00ffff;
+  box-shadow: 0 0 8px #00ffff;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Make table section wider */
+.table-section {
+  grid-column: span 2;
+  width: 100%;  /* full width */
+  overflow-x: auto;
+  background: rgba(0, 255, 255, 0.1);
+  padding: 25px 15px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00eaff;
+}
+
+/* Table font size and padding bigger */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #00eaff;
+  font-size: 16px; /* bigger font */
+  text-align: left;
+}
+
+thead th {
+  padding: 14px 20px;
+  text-shadow: 0 0 6px #00eaff;
+  border-bottom: 1px solid #00eaff;
+}
+
+tbody td {
+  padding: 14px 20px;
+}
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #00eaff;
+  font-size: 14px;
+  text-shadow:
+    0 0 5px #00eaff,
+    0 0 10px #00eaff,
+    0 0 20px #00eaff;
+}table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto; /* columns size based on content */
+}
+
+th, td {
+  padding: 10px 15px; /* more padding for readability */
+  border: 1px solid #00eaff;
+  color: #00eaff;
+  text-align: left;
+  white-space: nowrap; /* prevent wrapping */
+}
+
+.table-section {
+  overflow-x: auto; /* horizontal scroll if needed */
+  margin-top: 20px;
+}
+.sidebar-logo {
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.sidebar-logo img {
+  width: 80px;
+  height: auto;
+  filter: drop-shadow(0 0 10px cyan);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-logo img:hover {
+  transform: scale(1.05);
+}
